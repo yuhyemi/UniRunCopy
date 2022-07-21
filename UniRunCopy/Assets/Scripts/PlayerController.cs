@@ -19,12 +19,26 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         //초기화
+        //게임 오브젝트로부터 사용할 컴포넌트들을 가져와 변수에 할당
+        playerRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     private void Update()
     {
         // 사용자 입력을 감지하고 점프하는 처리
+        if (isDead)
+        {
+            //사망 시 처리를 더 이상 진행하지 않고 종료
+            return;
+        }
+        //마우스 왼쪽 버튼을 눌렀으며 && 최대 점프 횟수(2)에 도달하지 않았다면
+        if (Input.GetButtonDown(0) && jumpCount < 2)
+        {
+            //점프 횟수 증가
+        }
     }
     private void Die()
     { 
